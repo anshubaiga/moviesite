@@ -5,208 +5,125 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Login Page</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
 
-  <style>
+  body {
+    background: url("https://images.unsplash.com/photo-1503264116251-35a269479413") center/cover no-repeat fixed;
+    /* Responsive full screen background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
 
-    * {
+  .login-container {
+    background: rgba(255,255,255,0.90);
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 380px;
+    backdrop-filter: blur(5px);
+  }
 
-      margin: 0;
+  .login-container h2 {
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+  }
 
-      padding: 0;
+  .login-container p {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 25px;
+  }
 
-      box-sizing: border-box;
+  .login-container label {
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+  }
 
-      font-family: Arial, sans-serif;
+  .login-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+  }
 
-    }
+  .forgot {
+    font-size: 13px;
+    margin-bottom: 18px;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: right;
+  }
 
-    class {
+  .btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
 
-      background: #f8f9fc;
+  .btn-primary {
+    background: #0a0a23;
+    color: #fff;
+    margin-bottom: 15px;
+  }
 
-      display: flex;
+  .btn-google {
+    background: #fff;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
 
-      justify-content: center;
+  .btn-google img {
+    width: 20px;
+    height: 20px;
+  }
 
-      align-items: center;
+  .signup-text {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14px;
+  }
 
-      height: 100vh;
+  .signup-text a {
+    font-weight: 700;
+    color: #0a0a23;
+    text-decoration: none;
+  }
 
-    }
-
+  /* Responsive */
+  @media (max-width: 480px) {
     .login-container {
-
-      background: #;
-
-      padding: 40px 30px;
-
-      border-radius: 12px;
-
-      box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
-
-      width: 100%;
-
-      max-width: 380px;
-
+      padding: 30px 20px;
     }
+  }
+</style>
 
-    .login-container h2 {
-
-      font-size: 26px;
-
-      font-weight: 700;
-
-      text-align: center;
-
-      margin-bottom: 10px;
-
-    }
-
-    .login-container p {
-
-      text-align: center;
-
-      font-size: 14px;
-
-      color: #555;
-
-      margin-bottom: 25px;
-
-    }
-
-    .login-container label {
-
-      font-size: 14px;
-
-      font-weight: 600;
-
-      display: block;
-
-      margin-bottom: 6px;
-
-    }
-
-    .login-container input {
-
-      width: 100%;
-
-      padding: 12px;
-
-      margin-bottom: 18px;
-
-      border: 1px solid #ddd;
-
-      border-radius: 8px;
-
-      outline: none;
-
-      font-size: 14px;
-
-    }
-
-    .forgot {
-
-      font-size: 13px;
-
-      margin-bottom: 18px;
-
-      color: #333;
-
-      font-weight: 600;
-
-      cursor: pointer;
-
-    }
-
-    .btn {
-
-      width: 100%;
-
-      padding: 12px;
-
-      border: none;
-
-      border-radius: 8px;
-
-      font-size: 16px;
-
-      font-weight: 600;
-
-      cursor: pointer;
-
-    }
-
-    .btn-primary {
-
-      background: #0a0a23;
-
-      color: #fff;
-
-      margin-bottom: 15px;
-
-    }
-
-    .btn-google {
-
-      background: #fff;
-
-      border: 1px solid #ddd;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 10px;
-
-    }
-
-    .btn-google img {
-
-      width: 20px;
-
-      height: 20px;
-
-    }
-
-    .signup-text {
-
-      text-align: center;
-
-      margin-top: 18px;
-
-      font-size: 14px;
-
-    }
-
-    .signup-text a {
-
-      font-weight: 700;
-
-      color: #0a0a23;
-
-      text-decoration: none;
-
-    }
-
-    /* Responsive */
-
-    @media (max-width: 480px) {
-
-      .login-container {
-
-        padding: 30px 20px;
-
-      }
-
-    }
-
-  </style>
-
-
-
-<body>
+  <body>
 
   <div class="login-container">
 
