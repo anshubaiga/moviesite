@@ -4,7 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Story 11</title>
+    <!-- App theme color (status bar color on mobile) -->
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <!-- App icon (must exist in /icons folder or change path) -->
+  <link rel="icon" type="image/png" href="icons/icon-192x192.png" />
+
+  <!-- Add to homescreen for iOS (optional) -->
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <link rel="stylesheet" href="movie.css">
+    <script src="app.js"></script>
+
+  <script>
+    // ==== Register Service Worker ====
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then(reg => {
+            console.log("Service Worker registered:", reg.scope);
+          })
+          .catch(err => {
+            console.log("Service Worker registration failed:", err);
+          });
+      });
+    }
+  </script>
 </head>
 <body>
     <div class="container">
