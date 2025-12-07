@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+   <head>
+<meta charset="UTF-8">
     <!-- App theme color (status bar color on mobile) -->
   <meta name="theme-color" content="#0f172a" />
 
-<head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <header>
+  <div class="logo">
+    <img src="https://image2url.com/images/1765112697196-01724020-c620-4f4d-ac46-d60d04852798.png" alt="Logo">
+  </div>
+</header> 
 <title>Terms & Conditions - Anshu Baiga</title>
 
 <style>
@@ -17,7 +22,20 @@
         color: #222;
         line-height: 1.8;
     }
+   header {
+  width: 100%;
+  padding: 15px 0;
+  background: #0f172a;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  border-bottom: 1px solid #ddd;
+}
 
+header .logo img {
+  height: 60px; /* Change logo size */
+  object-fit: contain;
+}
     .wrapper {
         max-width: 950px;
         margin: 50px auto;
