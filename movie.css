@@ -341,7 +341,7 @@ input ~ .checked-radio-bg{
         position: absolute;
         inset: 0;
         opacity: 0;
-        backdrop-filter: blur(5px);
+        backdrop-filter: (5px);
     }
 
         .movie-card:hover .card-overlay{ opacity: 0;}
@@ -805,6 +805,7 @@ footer{
 
     .wrapper{ margin-bottom: 20px;}
 }
+
 
 
 
