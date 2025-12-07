@@ -1,11 +1,11 @@
 {
-  "name": "My PWA Application",
-  "short_name": "MyPWA",
+  "name": "Story 11",
+  "short_name": "Story 11",
   "description": "A simple Progressive Web App example.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
+  "background_color": "#e6e6e6",
   "theme_color": "#0f172a",
   "icons": [
     {
