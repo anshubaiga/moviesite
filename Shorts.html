@@ -18,14 +18,16 @@
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: center;
       padding: 20px;
     }
 
-    /* Outer wrapper */
+    /* Outer wrapper – multiple reels column */
     .reel-wrapper {
       width: 100%;
-      max-width: 420px; /* Larger look on desktop */
+      max-width: 420px; /* desktop पर भी मोबाइल जैसा look */
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
     }
 
     /* Reel frame - Always 9:16 */
@@ -69,58 +71,107 @@
 <body>
 
   <div class="reel-wrapper">
+
+    <!-- =============== VIDEO 1 =============== -->
     <div class="reel-frame">
-
-      <!-- YOUTUBE SHORT AUTOPLAY + LOOP -->
       <iframe
-        id="ytFrame"
-        src="https://www.youtube.com/embed/0g5y745VmP8?autoplay=1&mute=1&controls=0&playsinline=1&loop=1&playlist=0g5y745VmP8"
+        id="v1"
+        src="https://www.youtube.com/embed/0g5y745VmP8?play=1&mute=1&controls=0&playsinline=1&loop=1&playlist=0g5y745VmP8"
         allow="play; encrypted-media"
         allowfullscreen>
       </iframe>
-
-      <!-- SOUND BUTTON -->
-      <div class="sound-btn" onclick="unmuteVideo()">
+      <div class="sound-btn" onclick="unmuteVideo('v1','0g5y745VmP8')">
         Tap for Sound 🔊
       </div>
-<div class="reel-frame">
+    </div>
 
-      <!-- YOUTUBE SHORT AUTOPLAY + LOOP -->
+    <!-- =============== VIDEO 2 =============== -->
+    <div class="reel-frame">
       <iframe
-        id="ytFrame"
-        src="https://www.youtube.com/embed/0g5y745VmP8?autoplay=1&mute=1&controls=0&playsinline=1&loop=1&playlist=0g5y745VmP8"
-        allow="autoplay; encrypted-media"
+        id="v2"
+        src="https://youtube.com/shorts/hHDXze1iyKE?si=N0MZai5HkGaAkvjm"
         allowfullscreen>
       </iframe>
-
-      <!-- SOUND BUTTON -->
-      <div class="sound-btn" onclick="unmuteVideo()">
+      <div class="sound-btn" onclick="unmuteVideo('v2','VIDEOID2')">
         Tap for Sound 🔊
       </div>
-<div class="reel-frame">
+    </div>
 
-      <!-- YOUTUBE SHORT AUTOPLAY + LOOP -->
+    <!-- =============== VIDEO 3 =============== -->
+    <div class="reel-frame">
       <iframe
-        id="ytFrame"
-        src="https://www.youtube.com/embed/0g5y745VmP8?autoplay=1&mute=1&controls=0&playsinline=1&loop=1&playlist=0g5y745VmP8"
+        id="v3"
+        src="https://youtube.com/shorts/KCKL7fX7_Sw?si=R2Ck79TDwmDlxlph"
         allow="play; encrypted-media"
         allowfullscreen>
       </iframe>
-
-      <!-- SOUND BUTTON -->
-      <div class="sound-btn" onclick="unmuteVideo()">
+      <div class="sound-btn" onclick="unmuteVideo('v3','VIDEOID3')">
         Tap for Sound 🔊
       </div>
+    </div>
 
+    <!-- =============== VIDEO 3 =============== -->
+    <div class="reel-frame">
+      <iframe
+        id="v3"
+        src="https://youtube.com/shorts/KCKL7fX7_Sw?si=R2Ck79TDwmDlxlph"
+        allow="play; encrypted-media"
+        allowfullscreen>
+      </iframe>
+      <div class="sound-btn" onclick="unmuteVideo('v3','VIDEOID3')">
+        Tap for Sound 🔊
+      </div>
     </div>
+<!-- =============== VIDEO 3 =============== -->
+    <div class="reel-frame">
+      <iframe
+        id="v3"
+        src="https://youtube.com/shorts/KCKL7fX7_Sw?si=R2Ck79TDwmDlxlph"
+        allow="play; encrypted-media"
+        allowfullscreen>
+      </iframe>
+      <div class="sound-btn" onclick="unmuteVideo('v3','VIDEOID3')">
+        Tap for Sound 🔊
+      </div>
     </div>
+<!-- =============== VIDEO 4 =============== -->
+    <div class="reel-frame">
+      <iframe
+        id="v3"
+        src="https://youtube.com/shorts/f1IdjExctpk?si=HRFKobTgQfTiUJ7X"
+        allow="play; encrypted-media"
+        allowfullscreen>
+      </iframe>
+      <div class="sound-btn" onclick="unmuteVideo('v3','VIDEOID3')">
+        Tap for Sound 🔊
+      </div>
     </div>
+<!-- =============== VIDEO 5 =============== -->
+    <div class="reel-frame">
+      <iframe
+        id="v3"
+        src="https://youtube.com/shorts/KCKL7fX7_Sw?si=R2Ck79TDwmDlxlph"
+        allow="play; encrypted-media"
+        allowfullscreen>
+      </iframe>
+      <div class="sound-btn" onclick="unmuteVideo('v3','VIDEOID3')">
+        Tap for Sound 🔊
+      </div>
+    </div>
+
+
+    <!-- इसी block को copy करके v4, v5 ... v10 तक बना सकते हैं -->
+
   </div>
 
   <script>
-    function unmuteVideo() {
-      const iframe = document.getElementById("ytFrame");
-      iframe.src = "https://www.youtube.com/embed/0g5y745VmP8?autoplay=1&mute=0&controls=1&playsinline=1&loop=1&playlist=0g5y745VmP8";
+    function unmuteVideo(frameId, videoId) {
+      const iframe = document.getElementById(frameId);
+      iframe.src =
+        "https://www.youtube.com/embed/" +
+        videoId +
+        "?autoplay=1&mute=0&controls=1&playsinline=1&loop=1&playlist=" +
+        videoId;
     }
   </script>
 
