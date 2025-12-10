@@ -1,4 +1,4 @@
-<!DOCTYPE html
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- App theme color (status bar color on mobile) -->
@@ -12,37 +12,59 @@
 
   <!-- Minimal styles for thumbnails only (no other layout changes) -->
   <style>
-    /* thumbnail overlay - minimal and isolated */
-    .video-card { position: relative; overflow: hidden; }
+    /* keep card as positioning container */
+    .video-card { position: relative; overflow: hidden; background:transparent; }
+
+    /* ensure consistent card media area by letting the media element (iframe/video or thumb) control height */
+    /* make thumbnail fully cover the media area and not distort */
     .video-card .thumb {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      cursor: pointer;
-      display: block;
-      z-index: 20;
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;        /* cover ensures no distortion */
+      cursor:pointer;
+      z-index:20;
+      position:relative;      /* keep in layout flow so it reserves space */
+      border-radius:6px;
     }
-    .video-card .thumb + .thumb-overlay {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%,-50%);
-      z-index: 25;
-      width: 68px;
-      height: 100px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+    /* play overlay: circular and centered */
+    .video-card .thumb-overlay {
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      z-index:25;
+      width:68px;
+      height:68px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       background: rgba(0,0,0,0.45);
       box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-      cursor: pointer;
+      cursor:pointer;
     }
-    .video-card .thumb-overlay svg { width: 28px; height: 28px; fill: #fff; }
+    .video-card .thumb-overlay svg { width:28px; height:28px; fill:#fff; }
+
     /* Hide the underlying iframe/video until thumbnail clicked */
     .video-card .media-hidden { display: none; }
+
+    /* When media is shown (not hidden) ensure it fills the width responsively */
+    .video-card iframe,
+    .video-card video {
+      width:100%;
+      height:auto; /* keep proportion; thumbnail reserves height */
+      border:0;
+      border-radius:6px;
+      display:block;
+    }
+
+    /* On small screens keep things tidy */
+    @media (max-width:560px){
+      .video-card .thumb-overlay { width:60px; height:60px; }
+      .video-card .thumb-overlay svg { width:24px; height:24px; }
+    }
   </style>
 </head>
 <body>
@@ -59,7 +81,7 @@
     <!-- YouTube embeds or your own MP4s -->
     <div class="video-card" data-type="youtube" data-id="dQw4w9WgXcQ">
       <!-- thumbnail added (click to reveal iframe) -->
-      <img class="thumb" alt="City timelapse" src="https://images.unsplash.com/photo-1471478331149-c72f17e33c73">
+      <img class="thumb" alt="City timelapse" src="https://images.unsplash.com/photo-1471478331149-c72f17e33c73?auto=format&fit=crop&w=1200&q=60">
       <div class="thumb-overlay" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
       </div>
@@ -72,7 +94,7 @@
     </div>
 
     <div class="video-card" data-type="youtube" data-id="kXYiU_JCYtU">
-      <img class="thumb" alt="Sunset walk" src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea">
+      <img class="thumb" alt="Sunset walk" src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=1200&q=60">
       <div class="thumb-overlay" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
       </div>
@@ -85,7 +107,7 @@
 
     <!-- Example with your own video file -->
     <div class="video-card" data-type="local" data-poster="https://via.placeholder.com/800x450.png?text=Local+Vlog">
-      <img class="thumb" alt="My local street vlog" src="https://images.unsplash.com/photo-1494232410401-ad00d5433cfa">
+      <img class="thumb" alt="My local street vlog" src="https://images.unsplash.com/photo-1494232410401-ad00d5433cfa?auto=format&fit=crop&w=1200&q=60">
       <div class="thumb-overlay" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
       </div>
@@ -129,7 +151,6 @@
         try {
           const src = iframe.getAttribute('src') || '';
           if (src && src.indexOf('youtube.com') !== -1 && src.indexOf('autoplay=1') === -1) {
-            // add autoplay param safely
             const sep = src.includes('?') ? '&' : '?';
             iframe.src = src + sep + 'autoplay=1&rel=0';
           }
