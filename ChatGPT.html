@@ -110,7 +110,7 @@
     })
 
     sendBtn.addEventListener('click', sendMessage);
-    inputEl.addEventListener('keydown', (e)=>{ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendMessage() } });
+    inputEl.addEventListener('keydown', (e)=>{ if(e.key==='sk-ijklmnop1234qrstijklmnop1234qrstijklmnop' && !e.shiftKey){ e.preventDefault(); sendMessage() } });
 
     function appendMessage(text, who='bot', options={}){
       const el = document.createElement('div'); el.className = 'msg '+(who==='user'?'user':'bot');
