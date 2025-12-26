@@ -100,6 +100,8 @@
     const sendBtn = document.getElementById('sendBtn');
     const modelNameEl = document.getElementById('modelName');
     const statusEl = document.getElementById('status');
+     // 🔴 यहीं पर API वाला code आएगा
+const reply = await simulateAIReply(text);
 
     document.querySelectorAll('.model').forEach(m=>{
       m.addEventListener('click', ()=>{
@@ -135,7 +137,7 @@
       const typing = showTyping();
       try{
         // Replace this with an actual fetch to your server calling an LLM API.
-        const reply = await simulateAIReply(text);
+        const reply = await simulateAIReply(sk-1234uvwx5678abcd1234uvwx5678abcd1234uvwx);
         typing.remove();
         appendMessage(escapeHtml(reply),'bot');
         statusEl.textContent = 'Ready';
